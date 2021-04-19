@@ -1,0 +1,101 @@
+.banner[_ngcontent-rui-c5] {
+ background:#000;
+ padding-top:2em;
+ min-height:260px;
+ height:auto
+}
+@media (max-width:768px) {
+ .banner[_ngcontent-rui-c5] {
+  padding-top:2.5rem;
+  height:264px;
+  margin-top:-2rem
+ }
+}
+.container[_ngcontent-rui-c5]   h1[_ngcontent-rui-c5] {
+ color:#fff;
+ font-size:32px;
+ font-weight:600;
+ margin-top:4rem
+}
+.container[_ngcontent-rui-c5]   p[_ngcontent-rui-c5] {
+ color:#fff;
+ font-size:20px;
+ width:1000px;
+ margin:0em 0
+}
+@media only screen and (max-device-width:767px) {
+ .container[_ngcontent-rui-c5]   p[_ngcontent-rui-c5] {
+  width:100%
+ }
+ .container[_ngcontent-rui-c5]   h1[_ngcontent-rui-c5] {
+  font-size:24px;
+ }
+ .container[_ngcontent-rui-c5]   p[_ngcontent-rui-c5] {
+  font-size:14px
+ }
+}
+
+.container-bread-crumb[_ngcontent-rui-c2] {
+    position:absolute;
+    margin:2em auto 0;
+    width: 100%;
+    max-height: 30px;
+   }
+
+.breadcrumb[_ngcontent-rui-c4] {
+margin:0em 0;
+z-index:1
+}
+@media (max-width:768px) {
+.breadcrumb[_ngcontent-rui-c4] {
+margin:0.5em 0;
+z-index:1
+}
+}
+.breadcrumb[_ngcontent-rui-c4]   .breadcrumb-item[_ngcontent-rui-c4]   a[_ngcontent-rui-c4] {
+color:#004884!important
+}
+.breadcrumb[_ngcontent-rui-c4]   .breadcrumb-item[_ngcontent-rui-c4]   span[_ngcontent-rui-c4] {
+font-size:14px;
+font-weight:500
+}
+.breadcrumb[_ngcontent-rui-c4]   .breadcrumb-item[_ngcontent-rui-c4]   .breadcrumb-text[_ngcontent-rui-c4] {
+margin-top:2px;
+color:#004884!important
+}
+.breadcrumb[_ngcontent-rui-c4]   .breadcrumb-item[_ngcontent-rui-c4]   .breadcrumb-text[_ngcontent-rui-c4]::first-letter {
+text-transform:capitalize
+}
+.breadcrumb[_ngcontent-rui-c4]   .breadcrumb-item[_ngcontent-rui-c4]   .mobile[_ngcontent-rui-c4] {
+display:block
+}
+@media screen and (max-width:768px) {
+.breadcrumb[_ngcontent-rui-c4]   .breadcrumb-item[_ngcontent-rui-c4]   .mobile[_ngcontent-rui-c4] {
+    display:none
+}
+}
+.breadcrumb[_ngcontent-rui-c4]   .breadcrumb-item[_ngcontent-rui-c4]   .govco-icon[_ngcontent-rui-c4] {
+font-size:1.1rem;
+color:#004884!important
+}
+@media (max-width:768px) {
+.breadcrumb[_ngcontent-rui-c4]   .active.white.mobile[_ngcontent-rui-c4] {
+    /*position:absolute;*/
+    left:3em;
+    margin-top:0
+}
+.breadcrumb[_ngcontent-rui-c4]   .breadcrumb-item.white[_ngcontent-rui-c4] {
+    /*position:absolute;*/
+    margin-top:0
+}
+}
+.breadcrumb[_ngcontent-rui-c4]   .white[_ngcontent-rui-c4]   .breadcrumb-text[_ngcontent-rui-c4],
+.breadcrumb[_ngcontent-rui-c4]   .white[_ngcontent-rui-c4]   .govco-icon[_ngcontent-rui-c4],
+.breadcrumb[_ngcontent-rui-c4]   .white[_ngcontent-rui-c4]   a[_ngcontent-rui-c4] {
+color:#fff!important
+}
+.breadcrumb[_ngcontent-rui-c4]   .breadcrumb[_ngcontent-rui-c4]   .breadcrumb-item[_ngcontent-rui-c4] + .active[_ngcontent-rui-c4] {
+background-color:transparent!important
+}
+
+   

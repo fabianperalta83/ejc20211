@@ -1,0 +1,193 @@
+<?php
+	/**
+	 * Rectifier
+	 * 
+	 * Clase que rectifica la validez del URL y el idcategoría del sitio.
+	 * 
+	 * @package 
+	 * @author Camilo Rodríguez - crodriguez@microsiotios.net
+	 * @copyright Copyright (c) 2006
+	 * @version $Id: Rectifier.class.php,v 1.1 2006/12/12 15:24:47 aforero Exp $
+	 * @access public
+	 **/
+	class Rectifier {
+		var $db;
+		/**
+		 * Rectifier::Rectifier()
+		 * 
+		 * Constructora de la clase.
+		 * 
+		 * @param
+		 * @return 
+		 **/
+		function Rectifier() {}
+		
+		/**
+		 * Rectifier::validarUrl()
+		 * 
+		 * Método que valida el URL del sitio y hace las redirecciones a los idcategoria's 
+		 * correspondientes.
+		 * 
+		 * @param array $datos, arreglo con los datos del request.
+		 * @return int, el id de la categoría a la que se debe redirigir.
+		 **/
+		function validarUrl($datos) {
+			
+			/**
+			* Este fix es para probarlo en la plataforma de desarrollo.  Debe ser eliminado en producciòn.
+			* $fix = explode('/', $_SERVER['REQUEST_URI']);
+			* $url = $_SERVER['HTTP_HOST'] . '/' . $fix[1] . '/';
+			* echo('<bold><font color=#FF3333 weight=bold>Acuérdese de cambiar el fix del URI antes de subir a producción la Clase de Rectifier!!!</font></bold>');			
+			* Fin fix
+			*/
+			require_once(_RUTABASE.'_db/adodb.inc.php');	/** CARGA DEL OBJETO */
+			$ADODB_FETCH_MODE = ADODB_FETCH_ASSOC;
+			$this->db = NewADOConnection(_DBCONNECT);
+			$this->db->Connect(_DBHOST, _DBUSER, _DBPASSWORD, _DBNAME) or die("Error al conectarse a la base de datos");
+
+			
+			/**
+			* Deberìa ser asì:
+			* $url = $_SERVER['HTTP_HOST'];
+			*/
+			if (_SISTEMA == 'U') {
+				$url = $_SERVER['HTTP_HOST'];
+			} else {
+				$fix = explode('/', $_SERVER['REQUEST_URI']);
+				$url = $_SERVER['HTTP_HOST'] . '/' . $fix[1] . '/' . $fix[2];
+			}
+			
+			$id = array_key_exists('idcategoria', $datos) ? $datos['idcategoria'] : NULL;
+				
+			if (($url . '/' == _WEBPADRE) || ($this->esIP($url))) {
+				return isset($datos['idcategoria']) ? $datos['idcategoria'] : 1 ;
+			} else {				
+				return $this->calcularIdcategoria($url, $id);
+			}
+		}
+		
+		/**
+		 * Rectifier::calcularIdcategoria()
+		 * 
+		 * Método que calcula la categoría a la que se debe redirigir, dependiendo de el
+		 * url solicitado y la idcategoria
+		 * 
+		 * @param String url
+		 * @param int idcategoria
+		 * @return 
+		 **/
+		function calcularIdcategoria($url, $cat = '') {
+			//Buscamos en base de datos el URL
+			$query = '	SELECT * 
+						FROM '._TBLCATEGORIA.'
+						WHERE  ( es_root = 1 and activa = 1 AND autor LIKE "%' . $url . '%" )';
+			$resDb = $this->db->Execute($query) or errorQuery(__LINE__, __FILE__);
+
+			
+			//Si $cat es vacío, mandamos a home de sitio o subsitio
+			//Si $cat != 0, validamos que la categoria sea parte del sitio que $url direcciona
+			if ($resDb->NumRows() == 1) {
+				
+				$row = $resDb->fields;
+				
+				if ($cat == '') {
+					
+					return $row['idcategoria'];
+					
+				} elseif ($cat == 1) {
+					
+					return $row['idcategoria'];
+					
+				} elseif ($this->validarCategoriaEnSitio($cat, $row)) {
+					
+					return $cat;
+					
+				} else {
+					
+					//TODO: Si $cat NOT IN $url, qué hacemos!!!????
+					return $row['idcategoria'];
+					
+				}
+				
+			}
+		}
+		
+		
+		/**
+		 * Rectifier::validarCategoriaEnSitio()
+		 * 
+		 * Mètodo que valida si la categorìa hace parte del sitio identificado por 
+		 * $ancestro.
+		 * 
+		 * @param int $sospechosa, la categorìa a validar
+		 * @param array $ancestro, el subsitio a validar
+		 * @return 
+		 **/
+		function validarCategoriaEnSitio($sospechosa, $ancestro) {
+			return $this->buscarAncestro($sospechosa, $ancestro['idcategoria']);
+		}
+		
+		/**
+		 * Rectifier::
+		 * 
+		 * Mètodo recursivo de bùsqueda de ancestro.
+		 * 
+		 * @param int $descendiente
+		 * @param int $ancestro
+		 * @return boolean, true si halla al ancestro como padre, false dlc.
+		 **/
+		function buscarAncestro($descendiente, $ancestro) {
+			$query = '	SELECT 	idcategoria, idpadre 
+						FROM 	'._TBLCATEGORIA.'
+						WHERE	idcategoria = ' . $descendiente . '';
+			
+			$resDb = $this->db->Execute($query) or errorQuery(__LINE__, __FILE__);
+			
+			if ($resDb->NumRows() != 1) {
+				return false;
+			}
+			
+			$row = $resDb->fields;
+			
+			if ($ancestro == $row['idpadre']) {
+				return true;
+			} else if (empty($row['idpadre'])) {
+				return false;
+			} else {
+				return $this->buscarAncestro($row['idpadre'], $ancestro);
+			}
+		}
+		
+		/**
+		 * Rectifier::esIP()
+		 * 
+		 * Método que valida si una cadena de caracteres tiene o no el formato de una IP.
+		 * 
+		 * @param
+		 * @return 
+		 **/
+		function esIP($url) {
+			$url = explode('.', $url);
+			
+			if (sizeof($url) != 4) {
+				return false;
+			} elseif (
+				(is_int($url[0])) && 
+				(is_int($url[1])) && 
+				(is_int($url[2])) && 
+				(is_int($url[3])) && 
+				($url[1] >= 0) && 
+				($url[2] >= 0) && 
+				($url[3] >= 0) && 
+				($url[0] <= 255) && 
+				($url[1] <= 255) &&
+				($url[2] <= 255) &&
+				($url[3] <= 255) 
+			) {
+				return true;	
+			} else {
+				return false;
+			}
+		}
+	}
+?>

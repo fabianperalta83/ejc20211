@@ -1,0 +1,62 @@
+.scroll-to-top {
+ opacity:0;
+ position:fixed;
+ bottom:1rem;
+ right:-144px;
+ border-top-left-radius:1rem;
+ border-bottom-left-radius:1rem;
+ overflow:hidden;
+ border:1px solid rgba(75,75,75,.2);
+ -webkit-box-shadow:0 3px 10px -3px #4b4b4b;
+ box-shadow:0 3px 10px -3px #4b4b4b;
+ z-index:110;
+ -webkit-transition:all .6s;
+ transition:all .6s
+}
+.scroll-to-top button {
+ border:unset;
+ display:-ms-flexbox;
+ display:flex;
+ -ms-flex-pack:center;
+ justify-content:center;
+ -ms-flex-align:center;
+ align-items:center;
+ padding:.5rem;
+ cursor:pointer
+}
+.scroll-to-top button .btn-svg-up-hover {
+ font-size:2rem!important;
+ line-height:2rem;
+ color:#7c0808
+}
+.scroll-to-top button .back-to-top-button {
+ padding:.4rem!important
+}
+.scroll-to-top button .label-button-star-up {
+ font-size:1rem!important;
+ padding:0 .6rem;
+ width:144px
+}
+.scroll-to-top:hover {
+ right:-.1rem!important
+}
+.show-scrollTop {
+ opacity:1;
+ -webkit-transition:all .6s;
+ transition:all .6s
+}
+body.all,
+body.all .nav-secondary.govco-content {
+ background-color:#000!important
+}
+body.all .scroll-to-top button .btn-svg-up-hover,
+body.all .scroll-to-top button span {
+ color:#fff
+}
+body.all .breadcrumb .breadcrumb-item .govco-icon:before,
+body.all .breadcrumb li:not(.active) a {
+ color:#fff!important
+}
+.color-p {
+    color: #323335
+}

@@ -1,0 +1,162 @@
+.news[_ngcontent-jvf-c8] {
+ margin-top:5rem;
+ margin-bottom:5rem;
+ text-align:center
+}
+.news[_ngcontent-jvf-c8]   .title[_ngcontent-jvf-c8] {
+ color:#323335;
+ /*font-weight:200;*/
+ font-family:Montserrat,sans-serif;
+ font-size:2rem;
+ margin:0 auto 1.5em;
+ line-height:44px
+}
+.news[_ngcontent-jvf-c8]   .launch[_ngcontent-jvf-c8] {
+ color:#323335;
+ font-weight:500;
+ font-family:"Work Sans",sans-serif;
+ font-size:.938rem;
+ display:block;
+ margin-bottom:2rem;
+ text-transform:uppercase
+}
+.news[_ngcontent-jvf-c8]   .link-news[_ngcontent-jvf-c8] {
+ text-decoration:unset
+}
+.news[_ngcontent-jvf-c8]   .card-header-image[_ngcontent-jvf-c8] {
+ margin:0!important;
+ max-height:274px;
+ height:274px;
+ overflow:hidden;
+ position:relative;
+ padding:0;
+ z-index:1;
+ border-radius:5px;
+ display:-webkit-box;
+ display:flex;
+ -webkit-box-pack:center;
+ justify-content:center;
+ -webkit-box-align:center;
+ align-items:center
+}
+.news[_ngcontent-jvf-c8]   .card-header-image[_ngcontent-jvf-c8]   img[_ngcontent-jvf-c8] {
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ -o-object-fit:cover;
+ object-position:center;
+ -o-object-position:center
+}
+.news[_ngcontent-jvf-c8]   .card-header[_ngcontent-jvf-c8] {
+ border-bottom:0
+}
+.news[_ngcontent-jvf-c8]   .card-body[_ngcontent-jvf-c8] {
+ text-align:left;
+ margin:0 auto;
+ width:100%;
+ padding:1rem 0;
+ overflow:hidden;
+ z-index:1;
+ box-sizing:border-box;
+ font-family:Montserrat,sans-serif;
+ position:relative
+}
+.news[_ngcontent-jvf-c8]   .card-body[_ngcontent-jvf-c8]   .card-category[_ngcontent-jvf-c8] {
+ color:#4b4b4b;
+ text-transform:uppercase;
+ font-size:14px;
+ font-family:"Work Sans",sans-serif!important;
+ display:block;
+ margin-bottom:.3rem;
+ font-weight:500;
+ line-height:21px
+}
+.news[_ngcontent-jvf-c8]   .card-body[_ngcontent-jvf-c8]   .card-title[_ngcontent-jvf-c8] {
+ text-decoration:underline;
+ font-family:Montserrat,sans-serif;
+ font-weight:600;
+ color:#323335;
+ font-size:18px
+}
+.news[_ngcontent-jvf-c8]   .card-body[_ngcontent-jvf-c8]   .card-title[_ngcontent-jvf-c8]:hover {
+ color:#7c0808 !important
+}
+.news[_ngcontent-jvf-c8]   .card-body[_ngcontent-jvf-c8]   .card-description[_ngcontent-jvf-c8] {
+ max-height:50px;
+ overflow:hidden;
+ margin:0;
+ font-size:1rem;
+ line-height:24px;
+ color:#4b4b4b;
+ font-family:"Work Sans",sans-serif;
+ font-weight:400
+}
+.news[_ngcontent-jvf-c8]   .card-blog[_ngcontent-jvf-c8] {
+ margin-top:0rem!important;
+ padding-bottom:0rem;
+ margin-bottom:0rem
+}
+.news[_ngcontent-jvf-c8]   .entidad[_ngcontent-jvf-c8] {
+ font-size:.875rem;
+ position:absolute;
+ bottom:0
+}
+.news[_ngcontent-jvf-c8]   .see-more[_ngcontent-jvf-c8]   a[_ngcontent-jvf-c8] {
+ height:48px;
+ display:-webkit-box;
+ display:flex;
+ font-family:"Work Sans",sans-serif;
+ -webkit-box-pack:center;
+ justify-content:center;
+ -webkit-box-align:center;
+ align-items:center;
+ color:#323335;
+ font-weight:500;
+ font-size:15px!important;
+ padding:.6rem 1.5rem .5rem;
+ border:1px solid #323335;
+ border-radius:2rem;
+ text-transform:uppercase;
+ transition:background-color .4s ease-out;
+ -moz-transition:background-color .4s ease-out;
+ -webkit-transition:background-color .4s ease-out
+}
+.news[_ngcontent-jvf-c8]   .see-more[_ngcontent-jvf-c8]:hover   a[_ngcontent-jvf-c8] {
+ background-color:#7c0808;
+ border:1px solid #7c0808;
+ color:#fff!important;
+ transition:background-color .4s ease-out;
+ -moz-transition:background-color .4s ease-out;
+ -webkit-transition:background-color .4s ease-out
+}
+@media screen and (max-width:768px) {
+ .news[_ngcontent-jvf-c8]   .card-body[_ngcontent-jvf-c8]   .card-title[_ngcontent-jvf-c8] {
+  font-size:1rem;
+  line-height:24px;
+  margin:0
+ }
+ .news[_ngcontent-jvf-c8] {
+  text-align:left;
+  padding:0;
+  margin:2.2rem 0
+ }
+ .news[_ngcontent-jvf-c8]   .launch[_ngcontent-jvf-c8] {
+  font-size:13px!important;
+  letter-spacing:0;
+  margin-bottom:.5rem
+ }
+ .news[_ngcontent-jvf-c8]   .title[_ngcontent-jvf-c8] {
+  font-size:24px!important;
+  text-align:left;
+  line-height:36px;
+  padding:0;
+  margin-bottom:1em
+ }
+ .news[_ngcontent-jvf-c8]   .card-description[_ngcontent-jvf-c8] {
+  font-size:14px!important;
+  line-height:30px!important
+ }
+ .news[_ngcontent-jvf-c8]   .card-category[_ngcontent-jvf-c8] {
+  font-size:13px!important
+ }
+}
